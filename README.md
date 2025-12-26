@@ -52,9 +52,5 @@ poetry. Для установки необходимо сделать следу
 poetry и git уже установлены):
 
 - `git pull git@github.com:antonno5/clothing_classifier.git`
-
-Macos:
-
-- `sudo brew update`
 - `poetry install --no-root`
 - `eval $(poetry env activate)`
