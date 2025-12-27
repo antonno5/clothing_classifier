@@ -12,6 +12,4 @@ def ensure_data_unpacked(data_path: Path):
 
 
 def download_data():
-    subprocess.run(
-        ["bash", "download_dataset.sh"], check=True, text=True, cwd="scripts"
-    )
+    subprocess.run(["bash", "download_dataset"], check=True, text=True, cwd="scripts")

@@ -1,4 +1,4 @@
-num_labels: 50
+num_labels: 10
 
 model_local_path: models
 

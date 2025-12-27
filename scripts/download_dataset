@@ -1,10 +1,10 @@
 ROOT="$(dirname "$(dirname "$(readlink -fn "$0")")")"
 RAW_DATA_PATH="$ROOT/data/raw"
-DATA_PATH="$ROOT/data/dataset"
+DATA_PATH="$ROOT/data/data"
 
-python3 clothing_classifier/download_data.py --url zalando-research/fashionmnist --target_dir $RAW_DATA_PATH
+python3 $ROOT/clothing_classifier/download_data.py --url zalando-research/fashionmnist --target_dir $RAW_DATA_PATH
 
-cp $ROOT/data/raw/fashion-mnist_train.csv $ROOT/data/dataset/dataset.csv
+cp $RAW_DATA_PATH/fashion-mnist_train.csv $DATA_PATH/dataset.csv
 
 dvc add $DATA_PATH/
 dvc push

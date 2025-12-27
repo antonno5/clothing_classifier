@@ -27,9 +27,11 @@ class Module(pl.LightningModule):
 
         self._log_parameters = log_parameters
         self._log_parameters = {
-            "all_logs": self._log_parameters["mlflow_save_dir"]
-            if self._log_parameters["label"] == "mlflow"
-            else self._log_parameters["save_dir"],
+            "all_logs": (
+                self._log_parameters["mlflow_save_dir"]
+                if self._log_parameters["label"] == "mlflow"
+                else self._log_parameters["save_dir"]
+            ),
             **self._log_parameters,
         }
         self.criterion = torch.nn.CrossEntropyLoss()
@@ -287,7 +289,7 @@ class Module(pl.LightningModule):
         Path(output_dir).mkdir(exist_ok=True)
 
         self.model.eval()
-        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        device = torch.device("cuda" if torch.cuda() else "cpu")
         if sample_input_path:
             sample_input = torch.load(sample_input_path)
         else:

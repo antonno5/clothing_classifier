@@ -1,19 +1,26 @@
-import pytorch_lightning as pl
 import torch
-from transformers import AutoModelForImageClassification, AutoImageProcessor
+from transformers import (
+    AutoImageProcessor,
+    ResNetConfig,
+    ResNetForImageClassification,
+)
+
 
 MODEL_SOURCE = "microsoft/resnet-50"
 
-def get_model(datamodule: pl.LightningDataModule) -> torch.nn.Module:
-    model = AutoModelForImageClassification.from_pretrained(
-        MODEL_SOURCE,
-        num_labels=len(datamodule.id2label),
-        id2label=datamodule.id2label,
-        label2id=datamodule.label2id,
+
+def get_model() -> torch.nn.Module:
+    config = ResNetConfig(
+        num_labels=10,
+        depths=[2, 2, 2, 2],
+        hidden_sizes=[32, 64, 64, 32],
+        layer_type="basic",
+        num_channels=3,
+        image_size=224,
     )
-    return model
+    return ResNetForImageClassification(config)
 
 
 def get_processor() -> AutoImageProcessor:
-    processor = AutoImageProcessor.from_pretrained(MODEL_SOURCE)
+    processor = AutoImageProcessor.from_pretrained(MODEL_SOURCE, use_fast=True)
     return processor

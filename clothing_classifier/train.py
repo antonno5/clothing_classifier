@@ -23,7 +23,7 @@ def main():
         logger = get_logger(config["logging"])
 
         assert len(datamodule.labels) <= config["model"]["num_labels"]
-        model = get_model(datamodule)
+        model = get_model()
 
         module = Module(
             model,
