@@ -23,11 +23,12 @@
 ### Данные
 
 Данные берутся из указанного выше источника(хранятся локально, потому что негде
-больше).
+больше). Использовать будем только train датасет.
 
 ### Валидация
 
-Датасет бьется на три части(трейн/тест/валидация) в отношении 60/20/20.
+Датасет бьется на три части(трейн/тест/валидация) в отношении 70/15/15. Для
+воспроизводимости берем `seed=42`.
 
 ## Моделирование
 
@@ -54,3 +55,11 @@ poetry и git уже установлены):
 - `git pull git@github.com:antonno5/clothing_classifier.git`
 - `poetry install --no-root`
 - `eval $(poetry env activate)`
+
+---
+
+### Ссылки на материалы
+
+- Датасет:
+  https://www.kaggle.com/datasets/zalando-research/fashionmnist?select=fashion-mnist_train.csv
+- Модель: https://huggingface.co/microsoft/resnet-18

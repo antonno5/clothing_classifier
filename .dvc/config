@@ -1,0 +1,5 @@
+[core]
+    remote = clothing_classifier_data
+    autostage = true
+['remote "clothing_classifier_data"']
+    url = ../data
