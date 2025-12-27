@@ -289,7 +289,7 @@ class Module(pl.LightningModule):
         Path(output_dir).mkdir(exist_ok=True)
 
         self.model.eval()
-        device = torch.device("cuda" if torch.cuda() else "cpu")
+        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         if sample_input_path:
             sample_input = torch.load(sample_input_path)
         else:

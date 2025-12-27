@@ -65,7 +65,7 @@ poetry и git уже установлены):
 
 После этого можно запускать тренировку следующей командой:
 
-`python3 cat_breed_detector/command.py train`
+`python3 clothing_classifier/commands.py train`
 
 Все данные автоматически подгрузятся, если они ещё не скачаны(запускается
 скрипт scripts/download_dataset)
@@ -75,7 +75,14 @@ poetry и git уже установлены):
 
 Для тестирования нужно выполнить команду:
 
-`python3 cat_breed_detector/command.py test --test_dir=<директория с моделями> --checkpoint_name=<имя файла чекпоинта в указанной ранее директории>`
+`python3 clothing_classifier/commands.py test --test_dir=<директория с моделями> --checkpoint_name=<имя файла чекпоинта в указанной ранее директории>`
+
+При тестировании получились следующие метрики:
+
+| Test metric   | DataLoader 0       |
+| ------------- | ------------------ |
+| test_accuracy | 0.5578888654708862 |
+| test_fiscore  | 0.5384445190429688 |
 
 ---
 

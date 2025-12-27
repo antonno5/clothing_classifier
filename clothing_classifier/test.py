@@ -19,7 +19,7 @@ def main(test_dir: str, checkpoint_name: str) -> None:
         datamodule.setup()
         logger = get_logger(config["logging"])
 
-        model = get_model(datamodule)
+        model = get_model()
         torch.set_float32_matmul_precision("medium")
 
         ensure_data_unpacked(f"{test_dir}/{checkpoint_name}")

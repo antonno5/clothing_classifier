@@ -1,7 +1,6 @@
 import numpy as np
 import pandas as pd
 import PIL.Image as Image
-import torch
 import torchvision.transforms as transforms
 from datasets import Dataset as HFDataset
 from torch.utils.data import Dataset
@@ -63,8 +62,8 @@ class ClothingClassificationDataset(Dataset):
         image = self.transform(image)
 
         return {
-            "pixel_values": image.clone().detach(),
-            "labels": torch.Tensor(label, dtype=torch.long).clone().detach(),
+            "pixel_values": image,
+            "labels": label,
         }
 
     @classmethod
@@ -80,7 +79,7 @@ class ClothingClassificationDataset(Dataset):
         new_df = pd.DataFrame(
             {
                 "label": df["label"].astype(int),
-                "pixels": df[pixel_columns].astype(float).values,
+                "pixels": df[pixel_columns].astype(float).values.tolist(),
             }
         )
         result = ClothingClassificationDataset.from_dataset(
