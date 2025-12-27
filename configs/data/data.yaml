@@ -1,2 +1,4 @@
 data_path:
   - data/dataset
+labels2id_meta: data/labels_metainfo/labels2id_metainfo.json
+id2labels_meta: data/labels_metainfo/id2labels_metainfo.json

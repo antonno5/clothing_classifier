@@ -1,17 +1,14 @@
-def get_labels_mapping() -> dict[int, str]:
-    return {
-        0: "T-shirt/top",
-        1: "Trouser",
-        2: "Pullover",
-        3: "Dress",
-        4: "Coat",
-        5: "Sandal",
-        6: "Shirt",
-        7: "Sneaker",
-        8: "Bag",
-        9: "Ankle boot",
-    }
+import json
+from pathlib import Path
 
 
-def id_to_label(id: int) -> str:
-    return get_labels_mapping()[id]
+def get_labels_metainfo(labels_meta_path: Path) -> dict[str, any]:
+    with open(labels_meta_path, "r") as labels_meta_file:
+        labels_meta = json.load(labels_meta_file)
+        return labels_meta
+
+
+def write_labels_metainfo(labels_meta_path: Path, labels_meta: dict[str, any]) -> None:
+    Path(labels_meta_path).parent.mkdir(exist_ok=True)
+    with open(labels_meta_path, "w") as labels_meta_file:
+        json.dump(labels_meta, labels_meta_file, indent=4)

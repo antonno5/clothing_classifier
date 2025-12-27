@@ -1,0 +1,6 @@
+label: mlflow
+
+experiment_name: clothing_classification
+run_name: res-net
+mlflow_save_dir: "mlflowruns"
+tracking_uri: http://127.0.0.1:8080
