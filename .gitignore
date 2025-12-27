@@ -7,9 +7,6 @@ venv/
 data/**
 outputs/**
 reports/**
-**/*.jpg
-**/*.png
-**/*.jpeg
 
 !.dvc/
 !*.dvc
